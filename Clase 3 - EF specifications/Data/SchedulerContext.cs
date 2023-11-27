@@ -1,12 +1,9 @@
 ﻿using Data;
+using Entities.CustomRelations;
 using Entities.Items;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 
 namespace Data
@@ -17,11 +14,20 @@ namespace Data
         public DbSet<PersonItem> Persons { get; set; }
         public DbSet<UserItem> Users { get; set; }
         public DbSet<ActivityItem> Activities { get; set; }
+        public DbSet<QuotaItem> Quotas { get; set; }
+        public DbSet<Payments> Payments { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             foreach (var relationship in builder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {
                 relationship.DeleteBehavior = DeleteBehavior.NoAction;
+            }
+
+            foreach (var property in builder.Model.GetEntityTypes()
+                .SelectMany(t => t.GetProperties())
+                .Where(p => p.ClrType == typeof(decimal) || p.ClrType == typeof(decimal?)))
+            {
+                property.SetColumnType("decimal(18,2)");
             }
 
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

@@ -1,9 +1,4 @@
 ﻿using Entities.Items;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entities.RequestModels
 {
@@ -28,10 +23,6 @@ namespace Entities.RequestModels
             {
                 userItem.Person = Person;
             }
-            //else
-            //{
-            //    throw new Exception();
-            //}
 
             if(Activities != null)
             {

@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data.ModelConfigurations
 {
-    public class ActivityTableConfig : IEntityTypeConfiguration<ActivityItem>
+    public class QuotaTableConfig : IEntityTypeConfiguration<QuotaItem>
     {
-        public void Configure(EntityTypeBuilder<ActivityItem> e)
+        public void Configure(EntityTypeBuilder<QuotaItem> e)
         {
-            e.ToTable("t_activities");
+            e.ToTable("t_quotas");
         }
     }
 }

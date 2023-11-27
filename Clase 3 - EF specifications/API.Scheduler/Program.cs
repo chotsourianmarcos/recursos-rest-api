@@ -19,7 +19,7 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserLogic, UserLogic>();
 
 builder.Services.AddDbContext<SchedulerContext>(
-        options => options.UseSqlServer("name=ConnectionStrings:ServiceContext"));
+        options => options.UseSqlServer("name=ConnectionStrings:ServiceContext").LogTo(Console.WriteLine));
 
 var app = builder.Build();
 
