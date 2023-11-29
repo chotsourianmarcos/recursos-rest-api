@@ -15,7 +15,12 @@ namespace Logic.Logic
         public List<UserItem> GetAllUsers()
         {
             //return _schedulerContext.Users.ToList();
-            return _schedulerContext.Users.Include(u => u.Person).ToList();
+            //return _schedulerContext.Users.Include(u => u.Person).ToList();
+
+            var queryResult = from Users in _schedulerContext.Users
+                              select Users;
+            var result = queryResult.ToList();
+            return result;
         }
 
         //public List<Tuple<UserItem, int>> GetUserActivitiesAmount()
