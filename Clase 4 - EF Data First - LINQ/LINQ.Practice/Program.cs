@@ -13,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IEjercitacionService, EjercitacionService>();
 
 builder.Services.AddDbContext<NorthwindContext>(
         options => options.UseSqlServer("name=ConnectionStrings:ServiceContext").LogTo(Console.WriteLine));
