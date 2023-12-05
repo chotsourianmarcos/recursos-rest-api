@@ -1,4 +1,5 @@
 ﻿using API.Scheduler.IServices;
+using Entities.Filters;
 using Entities.Items;
 using Entities.RequestModels;
 using Logic.ILogic;
@@ -15,6 +16,11 @@ namespace API.Scheduler.Services
         public List<UserItem> GetAllUsers()
         {
             return _userLogic.GetAllUsers();
+        }
+
+        public List<UserItem> GetUsersByCriteria(UserFilter filter)
+        {
+            return _userLogic.GetUsersByCriteria(filter.ToFunction());
         }
 
         public int RegisterNewUser(NewUserRequest newUserRequest)

@@ -1,4 +1,5 @@
-﻿using Entities.Items;
+﻿using Entities.Filters;
+using Entities.Items;
 using Entities.RequestModels;
 
 namespace API.Scheduler.IServices
@@ -7,5 +8,6 @@ namespace API.Scheduler.IServices
     {
         int RegisterNewUser(NewUserRequest newUserRequest);
         List<UserItem> GetAllUsers();
+        List<UserItem> GetUsersByCriteria(UserFilter filter);
     }
 }

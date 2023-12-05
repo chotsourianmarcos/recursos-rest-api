@@ -1,4 +1,5 @@
 ﻿using API.Scheduler.IServices;
+using Entities.Filters;
 using Entities.Items;
 using Entities.RequestModels;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +24,11 @@ namespace API.Scheduler.Controllers
         public List<UserItem> GetAllUsers()
         {
             return _userService.GetAllUsers();
+        }
+        [HttpGet(Name = "GetUsersByCriteria")]
+        public List<UserItem> GetUsersByCriteria([FromQuery] UserFilter filter)
+        {
+            return _userService.GetUsersByCriteria(filter);
         }
     }
 }

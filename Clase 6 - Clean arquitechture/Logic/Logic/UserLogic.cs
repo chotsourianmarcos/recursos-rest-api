@@ -1,6 +1,7 @@
 ﻿using Entities.Items;
 using Logic.IContext;
 using Logic.ILogic;
+using System.Linq.Expressions;
 
 namespace Logic.Logic
 {
@@ -18,6 +19,12 @@ namespace Logic.Logic
         public List<UserItem> GetAllUsers()
         {
             var users = _userQuery.GetAll();
+            return users.ToList();
+        }
+
+        public List<UserItem> GetUsersByCriteria(Expression<Func<UserItem, bool>> funcPred)
+        {
+            var users = _userQuery.GetByCriteria(funcPred);
             return users.ToList();
         }
 
